@@ -26,7 +26,7 @@ ALL LOGIC 是一款**非官方**的多厂商逻辑分析仪上位机。
 
 下列设备为二次开发中自行接入，**不是**各厂商官方上位机：
 
-1. **CH32H417 逻辑分析仪** — [立创开源硬件平台项目](https://oshwhub.com/q2h2/project_bszkxrnf)
+1. **CH32H417 逻辑分析仪** — [立创开源硬件](https://oshwhub.com/q2h2/project_bszkxrnf) · [固件仓库](https://github.com/Doukeyi-X/OpenSourceLogic-CH32H417)
 2. **SLogic16U3（5 Gbps 版本）** — [Sipeed 介绍页](https://wiki.sipeed.com/hardware/zh/logic_analyzer/slogic16u3/Introduction.html)
 3. **PXLogic32U3（5 Gbps 版本）** — [MarryChip](https://marrychip.com/)
 
@@ -42,7 +42,7 @@ https://github.com/Doukeyi-X/ALL-LOGIC/issues
 
 Issue 里尽量写清：设备型号、系统版本、复现步骤，或附上硬件开源/购买链接。我们会按社区互操作的方式评估能否加上。
 
-本仓库**只发布上位机源码**。设备固件工程、安装包、本地校准工具不放在 git 里。Windows 安装包和绿色版见 [Releases](https://github.com/Doukeyi-X/ALL-LOGIC/releases)。
+本仓库**只发布上位机源码**。CH32H417 固件在独立仓库 [OpenSourceLogic-CH32H417](https://github.com/Doukeyi-X/OpenSourceLogic-CH32H417)。Windows 安装包和绿色版见 [Releases](https://github.com/Doukeyi-X/ALL-LOGIC/releases)。
 
 ### 目录说明
 
@@ -98,7 +98,7 @@ On top of the original DSView sources we mainly:
 
 These were added in this secondary development. They are **not** official vendor hosts:
 
-1. **CH32H417 logic analyzer** — [OSHWHUB project](https://oshwhub.com/q2h2/project_bszkxrnf)
+1. **CH32H417 logic analyzer** — [OSHWHUB project](https://oshwhub.com/q2h2/project_bszkxrnf) · [firmware](https://github.com/Doukeyi-X/OpenSourceLogic-CH32H417)
 2. **SLogic16U3 (5 Gbps)** — [Sipeed introduction](https://wiki.sipeed.com/hardware/zh/logic_analyzer/slogic16u3/Introduction.html)
 3. **PXLogic32U3 (5 Gbps)** — [MarryChip](https://marrychip.com/)
 
@@ -114,7 +114,7 @@ https://github.com/Doukeyi-X/ALL-LOGIC/issues
 
 Please include the model, OS, steps to reproduce, or a hardware / shop link. We will evaluate new analyzers as community interoperability work.
 
-This repository publishes **host source only**. Device firmware trees, installers, and local calibration tools are not in git. Windows setup and portable zip are in [Releases](https://github.com/Doukeyi-X/ALL-LOGIC/releases).
+This repository publishes **host source only**. CH32H417 firmware is in [OpenSourceLogic-CH32H417](https://github.com/Doukeyi-X/OpenSourceLogic-CH32H417). Windows setup and portable zip are in [Releases](https://github.com/Doukeyi-X/ALL-LOGIC/releases).
 
 ### Layout
 
