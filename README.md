@@ -62,6 +62,13 @@ Issue 里尽量写清：设备型号、系统版本、复现步骤，或附上�
 
 你可以自由使用、修改、再分发；若对外提供二进制，必须同时提供对应源码，并保留本许可证与原作者版权。
 
+### Contributors
+
+| | |
+|---|---|
+| [Doukeyi-X](https://github.com/Doukeyi-X) | ALL LOGIC 二次开发 |
+| [DreamSourceLab](https://github.com/DreamSourceLab)（梦源） | 原作 DSView |
+
 ### 上游项目
 
 - DSView：https://github.com/DreamSourceLab/DSView
@@ -126,6 +133,13 @@ This repository publishes **host source only**. Device firmware trees, installer
 The program as a whole is licensed under the **GNU GPLv3 or later**. See `COPYING` and `NOTICE.txt`.
 
 You may use, modify, and redistribute it. If you distribute binaries, you must also provide the corresponding source and keep this license and the original copyrights.
+
+### Contributors
+
+| | |
+|---|---|
+| [Doukeyi-X](https://github.com/Doukeyi-X) | ALL LOGIC secondary development |
+| [DreamSourceLab](https://github.com/DreamSourceLab) | Original DSView |
 
 ### Upstream
 
