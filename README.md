@@ -22,6 +22,26 @@ ALL LOGIC 是一款**非官方**的多厂商逻辑分析仪上位机。
 - 增加本机 MCP 接口，方便 AI 客户端控制采集与解码
 - 关于页、许可证说明改为明确标注「二次修改 / 非官方」
 
+### 已支持的设备（社区驱动）
+
+下列设备为二次开发中自行接入，**不是**各厂商官方上位机：
+
+1. **CH32H417 逻辑分析仪** — [立创开源硬件平台项目](https://oshwhub.com/q2h2/project_bszkxrnf)
+2. **SLogic16U3（5 Gbps 版本）** — [Sipeed 介绍页](https://wiki.sipeed.com/hardware/zh/logic_analyzer/slogic16u3/Introduction.html)
+3. **PXLogic32U3（5 Gbps 版本）** — [MarryChip](https://marrychip.com/)
+
+原 DSView 已支持的 DreamSourceLab 仪器，在二次开发中仍然可用。
+
+### 给个 Star，也欢迎提需求
+
+如果这个项目对你有用，请点一下右上角的 **Star**，方便更多人找到它，也是对我们继续改下去的最大鼓励。
+
+遇到崩溃、采不到数、驱动识别不对，或你手头有想接入的逻辑分析仪，请开 Issue：
+
+https://github.com/Doukeyi-X/ALL-LOGIC/issues
+
+Issue 里尽量写清：设备型号、系统版本、复现步骤，或附上硬件开源/购买链接。我们会按社区互操作的方式评估能否加上。
+
 本仓库**只发布上位机源码**。设备固件工程、安装包、本地校准工具不放在 git 里。Windows 安装包和绿色版见 [Releases](https://github.com/Doukeyi-X/ALL-LOGIC/releases)。
 
 ### 目录说明
@@ -66,6 +86,26 @@ On top of the original DSView sources we mainly:
 - Added community drivers for additional logic analyzers (interoperability)
 - Added a local MCP interface so AI clients can control capture and decode
 - Replaced the About / legal text so the secondary-modification status is explicit
+
+### Supported devices (community drivers)
+
+These were added in this secondary development. They are **not** official vendor hosts:
+
+1. **CH32H417 logic analyzer** — [OSHWHUB project](https://oshwhub.com/q2h2/project_bszkxrnf)
+2. **SLogic16U3 (5 Gbps)** — [Sipeed introduction](https://wiki.sipeed.com/hardware/zh/logic_analyzer/slogic16u3/Introduction.html)
+3. **PXLogic32U3 (5 Gbps)** — [MarryChip](https://marrychip.com/)
+
+DreamSourceLab instruments already supported by upstream DSView still work.
+
+### Star, bugs, and new hardware
+
+If ALL LOGIC helps you, please **Star** the repo. It makes the project easier to find and keeps the work going.
+
+Found a crash, a device that will not enumerate, or a logic analyzer you want added? Open an issue:
+
+https://github.com/Doukeyi-X/ALL-LOGIC/issues
+
+Please include the model, OS, steps to reproduce, or a hardware / shop link. We will evaluate new analyzers as community interoperability work.
 
 This repository publishes **host source only**. Device firmware trees, installers, and local calibration tools are not in git. Windows setup and portable zip are in [Releases](https://github.com/Doukeyi-X/ALL-LOGIC/releases).
 
