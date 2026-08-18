@@ -1,0 +1,55 @@
+# Build / packages (binaries go to GitHub Releases)
+build/
+build.dir/
+dist/
+dist_package_log.txt
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CPackConfig.cmake
+CPackSourceConfig.cmake
+Makefile
+*.cxx
+*.cxx_parameters
+moc_*.cpp
+moc_*.cpp_parameters
+qrc_*
+DSView/ui_*.h
+DSView/qrc_*.cpp
+DSView/config.h
+libsigrok4DSL/config.h
+libsigrokdecode4DSL/config.h
+
+# Firmware trees and vendor IDEs (not part of the host repo)
+FW/
+**/.mrs/
+**/*.snapshot
+
+# Local tools / calibration leftovers
+tools/*.exe
+tools/*.log
+tools/*.csv
+tools/zadig*.exe
+tools/test_*.c
+tools/test_*.bat
+tools/calibrate_*.c
+tools/lowdiv_cal.c
+tools/verify_map.c
+tools/run_vth_cal.bat
+tools/hadc_cal_result.txt
+tools/vth_dac_cal.csv.lut.c
+
+# Junk
+*.[oa]
+*~
+*.Plo
+*.pc
+*.Po
+*.la
+*.lo
+*.pyc
+__pycache__/
+.DS_Store
+.vscode/
+.qt/
+*.user

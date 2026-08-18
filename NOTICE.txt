@@ -1,0 +1,44 @@
+ALL LOGIC
+=========
+
+ALL LOGIC is an unofficial, independently modified host for logic analyzers.
+
+It is based on DSView (DreamSourceLab), which is itself based on PulseView
+from the sigrok project.
+
+This software is NOT affiliated with, endorsed by, or an official product of:
+  - DreamSourceLab / DSLogic / DSView
+  - Sipeed / SLogic
+  - PXLogic / PXView
+  - WCH / Nanjing Qinheng
+  - or any other hardware vendor whose devices may appear in the device list
+
+Device names such as "DSLogic" in the UI are the hardware product names
+reported by the instrument. They do not mean official vendor support.
+
+
+License (GPLv3+)
+----------------
+The program as a whole is licensed under the GNU General Public License
+version 3 or later. See the file COPYING.
+
+Original DSView / PulseView / libsigrok / libsigrokdecode copyrights remain
+with their respective authors. Those copyright headers must be kept.
+
+If you received an ALL LOGIC binary, you are entitled to the corresponding
+complete source code under GPLv3+. Ask the person who gave you the binary,
+or use the source tree that produced this build.
+
+
+Third-party hardware
+--------------------
+Community drivers for non-DreamSourceLab analyzers exist only for
+interoperability. Bundled firmware, if any, is provided solely to talk to
+those devices. Do not present ALL LOGIC as an official vendor tool, and do
+not ship another vendor's closed-source installer or private SDK with it.
+
+
+Trademarks
+----------
+DSView, DSLogic, DreamSourceLab and other vendor names are trademarks of
+their owners. ALL LOGIC uses a separate name and logo on purpose.

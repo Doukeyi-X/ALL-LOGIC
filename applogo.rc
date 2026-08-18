@@ -1,0 +1,2 @@
+// ALL LOGIC application icon (rebuild when logo-win.ico changes)
+IDI_ICON1 ICON DISCARDABLE "logo-win.ico"

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- 由 Microsoft Visio, SVG Export 生成 measure.svg 页-1 -->
+
+<svg
+   xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="512"
+   height="512"
+   viewBox="0 0 384.00023 384.00002"
+   xml:space="preserve"
+   class="st4"
+   version="1.1"
+   id="svg40"
+   sodipodi:docname="measure.svg"
+   style="font-size:12px;overflow:visible;color-interpolation-filters:sRGB;fill:none;fill-rule:evenodd;stroke-linecap:square;stroke-miterlimit:3"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"><metadata
+   id="metadata46"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs44" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="3840"
+   inkscape:window-height="2081"
+   id="namedview42"
+   showgrid="false"
+   units="px"
+   inkscape:zoom="0.62937363"
+   inkscape:cx="255.99985"
+   inkscape:cy="187.488"
+   inkscape:window-x="-9"
+   inkscape:window-y="-9"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg40" />
+	<v:documentProperties
+   v:langID="2052"
+   v:viewMarkup="false" />
+
+	<style
+   type="text/css"
+   id="style2">
+	<![CDATA[
+		.st1 {fill:#d7d7d7;stroke:none;stroke-linecap:butt;stroke-width:13.0108}
+		.st2 {fill:#d7d7d7;stroke:none;stroke-linecap:butt;stroke-width:20.4443}
+		.st3 {fill:#d7d7d7;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st4 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<g
+   v:mID="0"
+   v:index="1"
+   v:groupContext="foregroundPage"
+   id="g38"
+   transform="translate(0.6615625,43.995397)">
+		<title
+   id="title4">页-1</title>
+		<v:pageProperties
+   v:drawingScale="0.0393701"
+   v:pageScale="0.0393701"
+   v:drawingUnits="24"
+   v:shadowOffsetX="9"
+   v:shadowOffsetY="-9" />
+		<g
+   id="group265-1"
+   v:mID="265"
+   v:groupContext="group">
+			<title
+   id="title6">工作表.265</title>
+			<g
+   id="group266-2"
+   transform="translate(48.189,-5.66929)"
+   v:mID="266"
+   v:groupContext="group">
+				<title
+   id="title8">工作表.266</title>
+				<g
+   id="group267-3"
+   transform="translate(0,-1.90966)"
+   v:mID="267"
+   v:groupContext="group">
+					<title
+   id="title10">工作表.267</title>
+					<g
+   id="shape268-4"
+   v:mID="268"
+   v:groupContext="shape"
+   transform="matrix(-1,0,0,1,286.299,-11.5395)">
+						<title
+   id="title12">工作表.268</title>
+						<path
+   d="m 33.73,248.45 h 112.86 l 5.31,5.3 H 27.06 l 0.69,-3.21 c 6.4,-29.57 33,-51.02 63.26,-51.02 2.4,0 4.76,0.18 7.1,0.44 l 6.49,6.5 c -4.39,-1.05 -8.94,-1.63 -13.59,-1.63 -26.68,0 -50.25,18.16 -57.28,43.62 z m 137.32,26.28 h -5.48 v -7.29 l -0.48,-0.48 h -1.35 v 7.78 h -4.97 v -7.78 h -1.83 v 7.78 h -4.61 v -15.69 h -1.84 v 15.69 h -4.31 v -7.78 h -1.84 v 7.78 h -5.48 v -7.78 h -1.83 v 7.78 h -4.96 v -7.78 h -1.84 v 7.78 h -5.05 v -15.69 h -1.84 v 15.69 h -4.96 v -7.78 h -1.84 v 7.78 h -5.48 v -7.78 h -1.82 v 7.78 h -4.97 v -7.78 h -1.84 v 7.78 h -5.04 v -15.69 h -1.83 v 15.69 H 91 v -7.78 h -1.84 v 7.78 h -5.48 v -7.78 h -1.84 v 7.78 h -4.96 v -7.78 h -1.84 v 7.78 h -4.6 v -15.68 l -1.83,-0.01 v 15.69 H 64.3 v -7.78 h -1.84 v 7.78 h -5.48 v -7.78 h -1.83 v 7.78 h -4.96 v -7.78 h -1.84 v 7.78 h -5.04 v -15.69 l -1.84,0.01 v 15.68 h -4.96 v -7.78 h -1.84 v 7.78 h -5.48 v -7.78 h -1.84 v 7.78 h -4.96 v -7.78 h -1.84 v 7.78 h -5.04 v -15.68 h -1.83 v 15.68 H 5.3 v -10.48 c 0,-42.76 31.5,-78.2 72.51,-84.59 l -4.66,-4.65 C 31.49,183.34 0,220.17 0,264.25 v 15.79 h 177.58 l -6.53,-7.12 z m -38.3,-123.04 -7.41,-7.43 2.37,-2.37 3.63,3.65 0.88,-0.88 -3.64,-3.65 2.63,-2.62 3.64,3.65 0.88,-0.88 -3.64,-3.65 2.38,-2.38 3.64,3.65 0.87,-0.87 -3.65,-3.65 2.43,-2.42 7.41,7.43 0.89,-0.89 -7.44,-7.41 1.67,-1.66 3.63,3.65 0.89,-0.89 -3.64,-3.65 2.62,-2.61 3.64,3.65 0.88,-0.89 -3.65,-3.64 2.38,-2.37 3.64,3.64 0.88,-0.87 -3.64,-3.64 2.2,-2.22 7.42,7.43 0.88,-0.88 -7.42,-7.41 2.05,-2.07 3.65,3.65 0.89,-0.88 -3.65,-3.65 2.63,-2.62 3.65,3.64 0.87,-0.88 -3.65,-3.64 2.38,-2.38 3.64,3.65 0.88,-0.88 -3.64,-3.64 2.41,-2.41 7.43,7.42 0.88,-0.88 -7.43,-7.42 2.37,-2.36 3.64,3.64 0.89,-0.88 -3.64,-3.65 2.61,-2.62 3.64,3.65 0.89,-0.89 -3.65,-3.64 2.37,-2.37 3.65,3.65 0.88,-0.89 -3.65,-3.66 2.41,-2.41 7.42,7.42 0.89,-0.88 -7.43,-7.42 8.18,-8.17 v 121.39 l 4.83,4.83 V 78.3 c 0,-0.97 -0.58,-1.86 -1.49,-2.24 -0.9,-0.37 -1.94,-0.16 -2.62,0.53 l -64.83,64.81 10.84,10.85 z m 38.21,39.34 v -66.08 c 0,-0.97 -0.58,-1.86 -1.49,-2.22 -0.91,-0.38 -1.93,-0.18 -2.64,0.52 l -31.82,31.83 3.42,3.42 27.7,-27.71 v 55.41 z m 48.45,59.05 -29.46,29.46 c -1.69,1.69 -4.44,1.69 -6.13,-0.01 L 59.36,155.09 c -1.69,-1.7 -1.7,-4.44 0,-6.13 L 88.82,119.5 c 1.69,-1.7 4.43,-1.7 6.13,0 L 219.4,243.96 c 1.7,1.69 1.7,4.43 0.01,6.12 z m -2.9,-3.06 -124.61,-124.61 -29.62,29.62 7.97,7.98 22.3,-22.29 2.58,2.57 -22.3,22.3 7.13,7.13 11.15,-11.15 2.58,2.59 -11.14,11.15 7,7 11.15,-11.15 2.59,2.6 -11.15,11.14 7.73,7.75 11.16,-11.16 2.58,2.59 -11.15,11.15 7.01,6.99 22.3,-22.28 2.58,2.58 -22.29,22.31 7.12,7.11 11.15,-11.14 2.59,2.58 -11.15,11.15 7,7.01 11.15,-11.15 2.59,2.59 -11.15,11.14 7.73,7.75 11.16,-11.16 2.59,2.61 -11.14,11.15 6.08,6.07 22.28,-22.29 2.6,2.59 -22.3,22.3 6.51,6.51 11.15,-11.15 2.59,2.59 -11.15,11.15 7.01,7 11.15,-11.14 2.59,2.59 -11.15,11.15 7.74,7.74 11.16,-11.15 2.58,2.59 -11.14,11.14 7.47,7.48 z"
+   class="st1"
+   id="path14"
+   inkscape:connector-curvature="0"
+   style="fill:#d7d7d7;stroke:none;stroke-width:13.01080036;stroke-linecap:butt" />
+					</g>
+					<g
+   id="group269-6"
+   transform="translate(0,-14.8131)"
+   v:mID="269"
+   v:groupContext="group">
+						<title
+   id="title17">工作表.269</title>
+						<g
+   id="shape270-7"
+   v:mID="270"
+   v:groupContext="shape">
+							<title
+   id="title19">工作表.270</title>
+							<path
+   d="m 134.45,243.34 1.46,-17.5 -22.87,-62.18 h 12.68 v 10.03 h 6.19 v -26.24 h -6.19 v 10.03 H 110.77 L 95.95,117.19 c 1.58,-3.56 2.48,-7.48 2.48,-11.63 C 98.43,90.92 87.54,79 73.45,77.08 V 42.84 H 65.7 v 34.24 c -14.09,1.9 -24.99,13.84 -24.99,28.48 0,5.85 1.76,11.28 4.77,15.83 L 32.21,157.47 H 16.64 v -10.03 h -6.2 v 26.24 h 6.2 V 163.65 H 29.93 L 7.06,225.84 8.51,243.33 0,281.23 19.14,247.7 l 13.75,-12.88 38.58,-98.75 38.6,98.75 13.74,12.88 19.14,33.53 z M 70.02,125.56 c -11.02,0 -19.96,-8.92 -19.96,-19.95 0,-11.01 8.94,-19.94 19.96,-19.94 11.02,0 19.95,8.93 19.95,19.94 0.01,11.03 -8.93,19.95 -19.95,19.95 z"
+   class="st2"
+   id="path21"
+   inkscape:connector-curvature="0"
+   style="fill:#d7d7d7;stroke:none;stroke-width:20.4442997;stroke-linecap:butt" />
+						</g>
+						<g
+   id="shape271-9"
+   v:mID="271"
+   v:groupContext="shape"
+   transform="translate(60.1901,-165.511)">
+							<title
+   id="title24">工作表.271</title>
+							<circle
+   cx="9.8272896"
+   cy="271.40399"
+   class="st2"
+   id="ellipse26"
+   r="9.8272896"
+   style="fill:#d7d7d7;stroke:none;stroke-width:20.4442997;stroke-linecap:butt" />
+						</g>
+					</g>
+				</g>
+				<g
+   id="shape272-11"
+   v:mID="272"
+   v:groupContext="shape"
+   transform="translate(9.4252)">
+					<title
+   id="title31">工作表.272</title>
+					<path
+   d="m 0,267.08 a 707.919,308.669 -90.02 0 0 122.88,-0.03 l -2.12,-4.34 A 687.932,299.955 89.27 0 1 1.98,262.77 Z"
+   class="st3"
+   id="path33"
+   inkscape:connector-curvature="0"
+   style="fill:#d7d7d7;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round" />
+				</g>
+			</g>
+		</g>
+	</g>
+</svg>

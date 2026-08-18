@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=ALL LOGIC
+Comment=Unofficial multi-vendor logic analyzer host (based on DSView)
+TryExec=AllLogic
+Exec=AllLogic
+Icon=alllogic
+Terminal=false
+Categories=Development;Electronics;Qt;

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="128" viewBox="0 0 520 128">
+  <rect x="4" y="4" width="120" height="120" rx="26" fill="#0A1628"/>
+  <path d="M22 70 H38 L54 40 H74 V78 H83 L94 98 H104 V70 H109"
+        fill="none" stroke="#00B4F0" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter"/>
+  <text x="144" y="62" font-family="Segoe UI, Arial, Helvetica, sans-serif" font-size="36" font-weight="700" fill="#E8EEF4">ALL LOGIC</text>
+  <text x="144" y="92" font-family="Segoe UI, Arial, Helvetica, sans-serif" font-size="14" fill="#9AA3AD">Unofficial host based on DSView</text>
+</svg>

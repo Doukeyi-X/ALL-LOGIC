@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- 由 Microsoft Visio, SVG Export 生成 file.svg 页-1 -->
+
+<svg
+   xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="512"
+   height="512"
+   viewBox="0 0 384.00023 383.99965"
+   xml:space="preserve"
+   class="st2"
+   version="1.1"
+   id="svg16"
+   sodipodi:docname="file.svg"
+   style="font-size:12px;overflow:visible;color-interpolation-filters:sRGB;fill:none;fill-rule:evenodd;stroke-linecap:square;stroke-miterlimit:3"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"><metadata
+   id="metadata22"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs20" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="793"
+   inkscape:window-height="480"
+   id="namedview18"
+   showgrid="false"
+   units="px"
+   inkscape:zoom="0.66210977"
+   inkscape:cx="255.99985"
+   inkscape:cy="177.32016"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="svg16" />
+	<v:documentProperties
+   v:langID="2052"
+   v:viewMarkup="false" />
+
+	<style
+   type="text/css"
+   id="style2">
+	<![CDATA[
+		.st1 {fill:#2a2a2a;stroke:none;stroke-linecap:butt;stroke-width:0.647758}
+		.st2 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<g
+   v:mID="0"
+   v:index="1"
+   v:groupContext="foregroundPage"
+   id="g14"
+   transform="translate(1.1719315,59.024225)">
+		<title
+   id="title4">页-1</title>
+		<v:pageProperties
+   v:drawingScale="0.0393701"
+   v:pageScale="0.0393701"
+   v:drawingUnits="24"
+   v:shadowOffsetX="9"
+   v:shadowOffsetY="-9" />
+		<g
+   id="group285-1"
+   v:mID="285"
+   v:groupContext="group">
+			<title
+   id="title6">工作表.285</title>
+			<g
+   id="shape339-2"
+   v:mID="339"
+   v:groupContext="shape"
+   transform="translate(64.0946,-13.9494)">
+				<title
+   id="title8">工作表.339</title>
+				<path
+   d="m 251.91,172.5 -44.79,84.77 c -2.19,4.22 -8.4,8.68 -13.2,8.68 L 14.3,265.98 c -3.79,0 -7.43,-1.5 -10.11,-4.19 C 1.51,259.11 0,255.47 0,251.68 L 0.03,112.2 c 0,-7.89 6.39,-14.29 14.28,-14.29 l 13.13,-0.02 v 12.19 h -8.78 c -1.72,0 -3.37,0.68 -4.59,1.9 -1.22,1.21 -1.9,2.86 -1.9,4.59 l 0.01,130.74 c 0,3.59 2.91,6.49 6.49,6.49 h 9 l 42.45,-85.87 c 2.4,-4.8 6.93,-8.67 11.72,-8.67 H 185.8 l 0.03,-34.56 c 6.79,0.63 12.15,6.26 12.15,13.21 v 21.35 h 47.68 c 5.63,0.06 10.37,5.62 6.25,13.24 z M 35.73,210.58 c -0.39,-42.75 0,-170.98 0,-170.98 0,-6.47 5.26,-11.73 11.72,-11.73 h 93.9 c 1.51,0 2.94,0.63 3.96,1.74 l 30.35,32.98 c 0.91,0.99 1.42,2.29 1.42,3.64 v 85.44 h -9.84 V 73.61 c 0,-1.35 -1.1,-2.45 -2.45,-2.45 h -23.24 c -2.72,0 -4.93,-2.21 -4.93,-4.92 V 40.17 c 0,-1.35 -1.1,-2.45 -2.45,-2.45 H 47.46 c -1.04,0 -1.88,0.84 -1.88,1.88 v 160.22 l -7.54,15.25 c 0,0 -2.27,-0.17 -2.31,-4.49 z M 146.48,61.32 h 14.63 l -14.63,-15.9 z m 5.33,19.87 H 61.06 c -3.34,0 -6.06,2.72 -6.06,6.06 0,3.34 2.72,6.06 6.06,6.06 h 90.76 c 3.34,0 6.06,-2.72 6.06,-6.06 0,-3.34 -2.72,-6.06 -6.07,-6.06 z m 6.07,41.35 c 0,-3.34 -2.72,-6.05 -6.07,-6.05 H 61.06 c -3.34,0 -6.06,2.71 -6.06,6.05 0,3.34 2.72,6.06 6.06,6.06 h 90.76 c 3.34,0 6.06,-2.72 6.06,-6.06 z M 55,158.07 c 0,3.34 2.72,6.05 6.06,6.05 h 2.18 c 3.83,-10.67 13.32,-12.11 13.32,-12.11 h -15.5 c -3.34,0 -6.06,2.72 -6.06,6.06 z"
+   class="st1"
+   id="path10"
+   inkscape:connector-curvature="0"
+   style="fill:#2a2a2a;stroke:none;stroke-width:0.64775801;stroke-linecap:butt" />
+			</g>
+		</g>
+	</g>
+</svg>

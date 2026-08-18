@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- 由 Microsoft Visio, SVG Export 生成 display.svg 页-1 -->
+
+<svg
+   xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="512"
+   height="512"
+   viewBox="0 0 384.00023 383.99965"
+   xml:space="preserve"
+   class="st2"
+   version="1.1"
+   id="svg16"
+   sodipodi:docname="display.svg"
+   style="font-size:12px;overflow:visible;color-interpolation-filters:sRGB;fill:none;fill-rule:evenodd;stroke-linecap:square;stroke-miterlimit:3"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"><metadata
+   id="metadata22"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs20" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="3840"
+   inkscape:window-height="2081"
+   id="namedview18"
+   showgrid="false"
+   units="px"
+   inkscape:zoom="0.66210977"
+   inkscape:cx="255.99985"
+   inkscape:cy="177.32016"
+   inkscape:window-x="-9"
+   inkscape:window-y="-9"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg16" />
+	<v:documentProperties
+   v:langID="2052"
+   v:viewMarkup="false" />
+
+	<style
+   type="text/css"
+   id="style2">
+	<![CDATA[
+		.st1 {fill:#d7d7d7;stroke:none;stroke-linecap:butt;stroke-width:0.612}
+		.st2 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<g
+   v:mID="0"
+   v:index="1"
+   v:groupContext="foregroundPage"
+   id="g14"
+   transform="translate(0.216115,59.021925)">
+		<title
+   id="title4">页-1</title>
+		<v:pageProperties
+   v:drawingScale="0.0393701"
+   v:pageScale="0.0393701"
+   v:drawingUnits="24"
+   v:shadowOffsetX="9"
+   v:shadowOffsetY="-9" />
+		<g
+   id="group273-1"
+   v:mID="273"
+   v:groupContext="group">
+			<title
+   id="title6">工作表.273</title>
+			<g
+   id="shape274-2"
+   v:mID="274"
+   v:groupContext="shape"
+   transform="translate(57.424,-14.7521)">
+				<title
+   id="title8">工作表.274</title>
+				<path
+   d="M 252.59,29.48 H 16.13 C 7.22,29.48 0,36.7 0,45.61 v 204.24 c 0,8.91 7.22,16.13 16.13,16.13 h 236.46 c 8.91,0 16.13,-7.22 16.13,-16.13 V 45.61 c 0,-8.91 -7.22,-16.13 -16.13,-16.13 z m -40.31,10.74 c 5.94,0 10.74,4.79 10.74,10.74 0,5.94 -4.8,10.73 -10.74,10.73 -5.94,0 -10.74,-4.79 -10.74,-10.73 0,-5.95 4.85,-10.74 10.74,-10.74 z m -29.57,0 c 5.95,0 10.74,4.79 10.74,10.74 0,5.94 -4.84,10.73 -10.74,10.73 -5.94,0 -10.74,-4.79 -10.74,-10.73 0,-5.95 4.85,-10.74 10.74,-10.74 z M 87.79,249.8 c 3.84,-22.25 23.22,-39.26 46.57,-39.26 23.36,0 42.73,16.96 46.57,39.26 z m 164.8,-6.08 c 0,-5.21 -4.25,-9.37 -9.46,-9.37 h -17.18 c -2.24,-8.59 -5.71,-16.9 -10.15,-24.4 l 12.2,-12.2 c 3.71,-3.7 3.71,-9.69 0,-13.39 l -20.06,-20.11 c -3.7,-3.7 -9.69,-3.7 -13.39,0 l -12.25,12.2 c -7.54,-4.43 -15.81,-7.91 -24.4,-10.14 v -17.19 c 0,-5.21 -4.11,-9.46 -9.37,-9.46 h -28.34 c -5.21,0 -9.32,4.25 -9.32,9.46 v 17.19 c -8.59,2.23 -16.91,5.71 -24.4,10.14 l -12.21,-12.2 c -3.7,-3.7 -9.68,-3.7 -13.39,0 l -20.06,20.06 c -3.7,3.7 -3.7,9.69 0,13.39 l 12.2,12.25 c -4.43,7.54 -7.9,15.81 -10.14,24.4 H 25.59 c -5.21,0 -9.46,4.12 -9.46,9.37 V 72.48 H 252.59 Z M 241.85,61.69 c -5.94,0 -10.74,-4.79 -10.74,-10.73 0,-5.95 4.85,-10.74 10.74,-10.74 5.94,0 10.74,4.79 10.74,10.74 0,5.94 -4.8,10.73 -10.74,10.73 z"
+   class="st1"
+   id="path10"
+   inkscape:connector-curvature="0"
+   style="fill:#d7d7d7;stroke:none;stroke-width:0.61199999;stroke-linecap:butt" />
+			</g>
+		</g>
+	</g>
+</svg>

@@ -1,0 +1,6 @@
+SUBSYSTEM=="usb", ATTRS{idVendor}=="2a0e", MODE="0666"
+# Sipeed SLogic16U3
+SUBSYSTEM=="usb", ATTRS{idVendor}=="359f", ATTRS{idProduct}=="3031", MODE="0666"
+# PXLogic (old WCH + new)
+SUBSYSTEM=="usb", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="5237", MODE="0666"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="05dc", MODE="0666"
