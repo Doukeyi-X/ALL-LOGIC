@@ -29,8 +29,14 @@ ALL LOGIC 是一款**非官方**的多厂商逻辑分析仪上位机。
 1. **CH32H417 逻辑分析仪** — [立创开源硬件](https://oshwhub.com/q2h2/project_bszkxrnf) · [固件仓库](https://github.com/Doukeyi-X/OpenSourceLogic-CH32H417)
 2. **SLogic16U3（5 Gbps 版本）** — [Sipeed 介绍页](https://wiki.sipeed.com/hardware/zh/logic_analyzer/slogic16u3/Introduction.html)
 3. **PXLogic32U3（5 Gbps 版本）** — [MarryChip](https://marrychip.com/)
+4. **ATK-Logic（正点原子 DL16 等）** — [官方上位机源码](https://github.com/alientek-openedv/atk-logic)
+5. **nanoDLA / Cypress FX2（fx2lafw）** — [wuxx/nanoDLA](https://github.com/wuxx/nanoDLA)
 
 原 DSView 已支持的 DreamSourceLab 仪器，在二次开发中仍然可用。
+
+版本记录见 [CHANGELOG.md](CHANGELOG.md)。当前版本 **1.4.0**。
+
+CH32H417 **第一次使用**：先烧 IAP → 枚举 USB CDC → ALL LOGIC「固件升级」写 APP → 首次完成后用 Zadig 安装 WinUSB → 插拔 USB → 再打开 ALL LOGIC 采集。逐步说明见 [固件仓库](https://github.com/Doukeyi-X/OpenSourceLogic-CH32H417)。
 
 ### 给个 Star，也欢迎提需求
 
@@ -101,8 +107,14 @@ These were added in this secondary development. They are **not** official vendor
 1. **CH32H417 logic analyzer** — [OSHWHUB project](https://oshwhub.com/q2h2/project_bszkxrnf) · [firmware](https://github.com/Doukeyi-X/OpenSourceLogic-CH32H417)
 2. **SLogic16U3 (5 Gbps)** — [Sipeed introduction](https://wiki.sipeed.com/hardware/zh/logic_analyzer/slogic16u3/Introduction.html)
 3. **PXLogic32U3 (5 Gbps)** — [MarryChip](https://marrychip.com/)
+4. **ATK-Logic (Alientek DL16 etc.)** — [official host source](https://github.com/alientek-openedv/atk-logic)
+5. **nanoDLA / Cypress FX2 (fx2lafw)** — [wuxx/nanoDLA](https://github.com/wuxx/nanoDLA)
 
 DreamSourceLab instruments already supported by upstream DSView still work.
+
+See [CHANGELOG.md](CHANGELOG.md). Current version is **1.4.0**.
+
+CH32H417 **first use**: flash IAP → USB CDC enumerates → ALL LOGIC **Firmware Upgrade** writes APP → after the first APP, install WinUSB with Zadig → unplug/replug → open ALL LOGIC and capture. Full steps: [firmware repo](https://github.com/Doukeyi-X/OpenSourceLogic-CH32H417).
 
 ### Star, bugs, and new hardware
 

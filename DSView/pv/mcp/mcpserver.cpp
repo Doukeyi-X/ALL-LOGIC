@@ -310,7 +310,7 @@ QJsonObject McpServer::handle_initialize()
 {
 	QJsonObject info;
 	info["name"] = "alllogic";
-	info["version"] = "1.3.2";
+	info["version"] = "1.4.0";
 	QJsonObject caps;
 	caps["tools"] = QJsonObject();
 	QJsonObject r;

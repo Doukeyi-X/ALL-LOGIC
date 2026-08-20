@@ -34,7 +34,7 @@
 
 #define MAX_DEVCIE_LIST_LENGTH  20
 
-// Wait the device reconnect for 500ms.
+/* Loose-contact reconnect window (loop is 100ms). */
 #define CHECK_DEV_RECONNECT_TIMES 5
 
 #undef LOG_PREFIX
@@ -1170,6 +1170,39 @@ SR_PRIV int sr_usb_device_is_exists(libusb_device *usb_dev)
 	return bFind;
 }
 
+SR_PRIV int sr_usb_driver_vidpid_is_listed(const char *drv_name,
+					   uint16_t vid, uint16_t pid)
+{
+	GSList *l;
+	struct sr_dev_inst *dev;
+	struct libusb_device_descriptor des;
+	int bFind = 0;
+
+	if (!drv_name)
+		return 0;
+
+	pthread_mutex_lock(&lib_ctx.mutext);
+	for (l = lib_ctx.device_list; l; l = l->next) {
+		dev = l->data;
+		if (dev->dev_type != DEV_TYPE_USB || !dev->driver ||
+		    !dev->driver->name)
+			continue;
+		if (strcmp(dev->driver->name, drv_name) != 0)
+			continue;
+		if (!dev->handle)
+			continue;
+		if (libusb_get_device_descriptor(
+			    (libusb_device *)dev->handle, &des) != 0)
+			continue;
+		if (des.idVendor == vid && des.idProduct == pid) {
+			bFind = 1;
+			break;
+		}
+	}
+	pthread_mutex_unlock(&lib_ctx.mutext);
+	return bFind;
+}
+
 /**
  * Forward the data.
  */
@@ -1222,9 +1255,13 @@ static int update_device_handle(struct libusb_device *old_dev, struct libusb_dev
 	int ch32_count = 0;
 	int slogic_count = 0;
 	int pxlogic_count = 0;
+	int atk_count = 0;
+	int fx2_count = 0;
 	struct sr_dev_inst *ch32_fallback = NULL;
 	struct sr_dev_inst *slogic_fallback = NULL;
 	struct sr_dev_inst *pxlogic_fallback = NULL;
+	struct sr_dev_inst *atk_fallback = NULL;
+	struct sr_dev_inst *fx2_fallback = NULL;
 
 	pthread_mutex_lock(&lib_ctx.mutext);
 
@@ -1259,6 +1296,20 @@ static int update_device_handle(struct libusb_device *old_dev, struct libusb_dev
 		    strcmp(dev->driver->name, "pxlogic") == 0) {
 			pxlogic_count++;
 			pxlogic_fallback = dev;
+		}
+#endif
+#ifdef HAVE_ATKLOGIC_DEVICE
+		if (dev->driver && dev->driver->name &&
+		    strcmp(dev->driver->name, "atk-logic") == 0) {
+			atk_count++;
+			atk_fallback = dev;
+		}
+#endif
+#ifdef HAVE_FX2LAFW_DEVICE
+		if (dev->driver && dev->driver->name &&
+		    strcmp(dev->driver->name, "fx2lafw") == 0) {
+			fx2_count++;
+			fx2_fallback = dev;
 		}
 #endif
 	}
@@ -1296,6 +1347,22 @@ static int update_device_handle(struct libusb_device *old_dev, struct libusb_dev
 			bFind = 1;
 		} else
 #endif
+#ifdef HAVE_ATKLOGIC_DEVICE
+		if (atk_count == 1 && atk_fallback != NULL &&
+		    nvid == 0x1A86 && npid == 0xFFCC) {
+			sr_info("ATK-Logic reconnect: fall back to sole atk-logic instance.");
+			fallback = atk_fallback;
+			bFind = 1;
+		} else
+#endif
+#ifdef HAVE_FX2LAFW_DEVICE
+		if (fx2_count == 1 && fx2_fallback != NULL &&
+		    nvid == 0x1D50 && (npid == 0x608C || npid == 0x608D)) {
+			sr_info("fx2lafw reconnect: fall back to sole fx2lafw instance.");
+			fallback = fx2_fallback;
+			bFind = 1;
+		} else
+#endif
 		{
 			fallback = NULL;
 		}
@@ -1303,6 +1370,8 @@ static int update_device_handle(struct libusb_device *old_dev, struct libusb_dev
 	(void)ch32_count;
 	(void)slogic_count;
 	(void)pxlogic_count;
+	(void)atk_count;
+	(void)fx2_count;
 
 	if (bFind && fallback != NULL)
 	{
@@ -1361,6 +1430,24 @@ static int update_device_handle(struct libusb_device *old_dev, struct libusb_dev
 				struct sr_dev_inst *sdi,
 				struct libusb_device *new_dev);
 			pxlogic_on_usb_reconnected(dev, new_dev);
+		}
+#endif
+#ifdef HAVE_ATKLOGIC_DEVICE
+		if (dev->driver && dev->driver->name &&
+		    strcmp(dev->driver->name, "atk-logic") == 0) {
+			extern void atk_logic_on_usb_reconnected(
+				struct sr_dev_inst *sdi,
+				struct libusb_device *new_dev);
+			atk_logic_on_usb_reconnected(dev, new_dev);
+		}
+#endif
+#ifdef HAVE_FX2LAFW_DEVICE
+		if (dev->driver && dev->driver->name &&
+		    strcmp(dev->driver->name, "fx2lafw") == 0) {
+			extern void fx2lafw_on_usb_reconnected(
+				struct sr_dev_inst *sdi,
+				struct libusb_device *new_dev);
+			fx2lafw_on_usb_reconnected(dev, new_dev);
 		}
 #endif
 
@@ -1527,6 +1614,26 @@ static void process_attach_event(int isEvent)
 							bFind = 1;
 							break;
 						}
+						/* Same driver + VID:PID: do not add a second
+						 * ghost (FX2 re-enum changes USB address). */
+						if (sdi->dev_type == DEV_TYPE_USB &&
+						    new_sdi->dev_type == DEV_TYPE_USB &&
+						    sdi->driver && new_sdi->driver &&
+						    sdi->driver->name && new_sdi->driver->name &&
+						    strcmp(sdi->driver->name,
+							   new_sdi->driver->name) == 0 &&
+						    sdi->handle && new_sdi->handle) {
+							struct libusb_device_descriptor da, db;
+							if (libusb_get_device_descriptor(
+								    (libusb_device *)sdi->handle, &da) == 0 &&
+							    libusb_get_device_descriptor(
+								    (libusb_device *)new_sdi->handle, &db) == 0 &&
+							    da.idVendor == db.idVendor &&
+							    da.idProduct == db.idProduct) {
+								bFind = 1;
+								break;
+							}
+						}
 					}
 
 					if (!bFind){
@@ -1621,6 +1728,7 @@ static gpointer usb_hotplug_process_proc(gpointer data)
 
 	int cur_trans_id = 0;
 	int poll_div = 0;
+	int full_scan_div = 0;
 
 	while (!lib_ctx.lib_exit_flag)
 	{
@@ -1631,9 +1739,22 @@ static gpointer usb_hotplug_process_proc(gpointer data)
 		 * hotplug callbacks never fire. Poll every ~1s as fallback
 		 * (same UX as official DSView: insert detect / remove remind).
 		 */
-		if (++poll_div >= 10) {
+		if (++poll_div >= 2) {
 			poll_div = 0;
 			poll_usb_hotplug_fallback();
+		}
+
+		/*
+		 * VID whitelist in ds_scan_all_device_list can miss a newly
+		 * added analyzer (e.g. ATK 1A86:FFCC). Periodically re-run
+		 * every hardware scan so a plugged device still appears.
+		 */
+		if (++full_scan_div >= 10) {
+			full_scan_div = 0;
+			if (!lib_ctx.attach_event_flag &&
+			    !lib_ctx.detach_event_flag &&
+			    !lib_ctx.is_waitting_reconnect)
+				process_attach_event(1);
 		}
 
 		if (lib_ctx.attach_event_flag){

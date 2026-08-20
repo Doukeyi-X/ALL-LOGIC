@@ -19,7 +19,7 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-$Version = "1.3.2"
+$Version = "1.4.0"
 $PkgName = "ALLLOGIC-$Version-win64"
 $ExeName = "AllLogic.exe"
 $MingwBin = "C:\msys64\mingw64\bin"
@@ -278,6 +278,7 @@ NOT affiliated with DreamSourceLab or any hardware vendor. See NOTICE.txt.
 
 【安装版】
   使用 $PkgName-setup.exe，安装名为 ALL LOGIC。
+  安装时可勾选「将 .dsl 文件关联到 ALL LOGIC」，双击会话文件即可打开。
 
 【许可证】
   GNU GPLv3+（COPYING）。分发二进制时须提供对应源码。
@@ -332,9 +333,11 @@ $icoLine
 !define MUI_UNICON "$icoUnix"
 !define MUI_WELCOMEPAGE_TITLE "ALL LOGIC $Version"
 !define MUI_WELCOMEPAGE_TEXT "Unofficial multi-vendor logic analyzer host based on DSView (GPLv3+).$\r$\n$\r$\nNot affiliated with DreamSourceLab or any hardware vendor. See NOTICE.txt."
+!define MUI_COMPONENTSPAGE_SMALLDESC
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_LICENSE "$stageUnix/COPYING"
 !insertmacro MUI_PAGE_DIRECTORY
+!insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_INSTFILES
 !insertmacro MUI_PAGE_FINISH
 !insertmacro MUI_UNPAGE_CONFIRM
@@ -363,13 +366,37 @@ Section "ALL LOGIC" SecMain
   CreateShortCut "`$DESKTOP\ALL LOGIC.lnk" "`$INSTDIR\AllLogic.exe" "" "`$INSTDIR\AllLogic.exe" 0
 SectionEnd
 
+Section "Associate .dsl files" SecAssoc
+  WriteRegStr HKCR ".dsl" "" "AllLogic.Session"
+  WriteRegStr HKCR ".dsl" "Content Type" "application/x-alllogic-session"
+  WriteRegStr HKCR ".dsl\OpenWithProgids" "AllLogic.Session" ""
+  WriteRegStr HKCR "AllLogic.Session" "" "ALL LOGIC Session"
+  WriteRegStr HKCR "AllLogic.Session\DefaultIcon" "" "`$INSTDIR\AllLogic.exe,0"
+  WriteRegStr HKCR "AllLogic.Session\shell\open\command" "" '"`$INSTDIR\AllLogic.exe" "%1"'
+  WriteRegStr HKCR "Applications\AllLogic.exe\shell\open\command" "" '"`$INSTDIR\AllLogic.exe" "%1"'
+  WriteRegStr HKLM "Software\AllLogic" "DslAssoc" "1"
+  System::Call 'shell32::SHChangeNotify(i 0x08000000, i 0, i 0, i 0)'
+SectionEnd
+
 Section "Uninstall"
+  ReadRegStr `$0 HKCR ".dsl" ""
+  StrCmp `$0 "AllLogic.Session" 0 skip_dsl
+  DeleteRegKey HKCR ".dsl"
+  DeleteRegKey HKCR "AllLogic.Session"
+  skip_dsl:
+  DeleteRegKey HKCR "Applications\AllLogic.exe"
   Delete "`$DESKTOP\ALL LOGIC.lnk"
   RMDir /r "`$SMPROGRAMS\ALL LOGIC"
   RMDir /r "`$INSTDIR"
   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\AllLogic"
   DeleteRegKey HKLM "Software\AllLogic"
+  System::Call 'shell32::SHChangeNotify(i 0x08000000, i 0, i 0, i 0)'
 SectionEnd
+
+!insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
+  !insertmacro MUI_DESCRIPTION_TEXT `${SecMain} "ALL LOGIC application files (required)"
+  !insertmacro MUI_DESCRIPTION_TEXT `${SecAssoc} "Open .dsl session files with ALL LOGIC"
+!insertmacro MUI_FUNCTION_DESCRIPTION_END
 "@
         # Fix File /r path for NSIS (backslash ok on Windows)
         $nsiText = $nsiText -replace 'File /r "(.+?)\\\*\.\*"', 'File /r "$1\*.*"'

@@ -407,6 +407,9 @@ SR_PRIV int sr_new_virtual_device(const char *filename, struct sr_dev_inst **out
  * Check whether the USB device is in the device list.
  */
 SR_PRIV int sr_usb_device_is_exists(libusb_device *usb_dev);
+/* True if a listed USB device from this driver already has this VID:PID. */
+SR_PRIV int sr_usb_driver_vidpid_is_listed(const char *drv_name,
+					   uint16_t vid, uint16_t pid);
 
 SR_PRIV void ds_set_last_error(int error);
 

@@ -31,8 +31,8 @@ set(DS_TITLE "ALL LOGIC")
 set(DS_DESCRIPTION "Unofficial multi-vendor logic analyzer host, based on DSView")
 
 set(DS_VERSION_MAJOR 1)
-set(DS_VERSION_MINOR 3)
-set(DS_VERSION_MICRO 2)
+set(DS_VERSION_MINOR 4)
+set(DS_VERSION_MICRO 0)
 set(DS_VERSION_STRING  ${DS_VERSION_MAJOR}.${DS_VERSION_MINOR}.${DS_VERSION_MICRO})
 
 configure_file (
@@ -493,6 +493,8 @@ set(libsigrok4DSL_SOURCES
     libsigrok4DSL/hardware/sipeed-slogic/slogic16u3.c
     libsigrok4DSL/hardware/pxlogic/usb_ctrl.c
     libsigrok4DSL/hardware/pxlogic/pxlogic.c
+    libsigrok4DSL/hardware/atk-logic/atk_logic.c
+    libsigrok4DSL/hardware/fx2lafw/fx2lafw.c
     libsigrok4DSL/lib_main.c
 )
 
@@ -595,6 +597,11 @@ endif()
 
 add_definitions(${QT_DEFINITIONS})
 add_definitions(-Wall -Wextra -Wno-return-type -Wno-ignored-qualifiers)
+# libsigrok4DSL/config.h is gitignored; keep community drivers on in CMake.
+add_definitions(
+	-DHAVE_ATKLOGIC_DEVICE=1
+	-DHAVE_FX2LAFW_DEVICE=1
+)
 
 if(NOT DISABLE_WERROR)
         add_definitions(-Werror)

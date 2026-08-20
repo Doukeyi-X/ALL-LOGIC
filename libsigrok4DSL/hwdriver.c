@@ -103,6 +103,12 @@ extern SR_PRIV struct sr_dev_driver slogic16u3_driver_info;
 #ifdef HAVE_PXLOGIC_DEVICE
 extern SR_PRIV struct sr_dev_driver pxlogic_driver_info;
 #endif
+#ifdef HAVE_ATKLOGIC_DEVICE
+extern SR_PRIV struct sr_dev_driver atk_logic_driver_info;
+#endif
+#ifdef HAVE_FX2LAFW_DEVICE
+extern SR_PRIV struct sr_dev_driver fx2lafw_driver_info;
+#endif
 /** @endcond */
 
 static struct sr_dev_driver *drivers_list[] = {
@@ -121,6 +127,12 @@ static struct sr_dev_driver *drivers_list[] = {
 #endif
 #ifdef HAVE_PXLOGIC_DEVICE
 	&pxlogic_driver_info,
+#endif
+#ifdef HAVE_ATKLOGIC_DEVICE
+	&atk_logic_driver_info,
+#endif
+#ifdef HAVE_FX2LAFW_DEVICE
+	&fx2lafw_driver_info,
 #endif
 	NULL,
 };
@@ -426,13 +438,15 @@ SR_PRIV int ds_scan_all_device_list(libusb_context *usb_ctx,struct libusb_device
             continue;
         }
 
-		/* DreamSourceLab + WCH CH32 + SLogic16U3 + PXLogic */
+		/* DreamSourceLab + WCH CH32 + SLogic16U3 + PXLogic + ATK-Logic + nanoDLA */
 		if (des.idVendor == DS_VENDOR_ID ||
 		    (des.idVendor == 0x1A86 &&
 		     (des.idProduct == 0x5537 || des.idProduct == 0x5538 ||
-		      des.idProduct == 0x5237)) ||
+		      des.idProduct == 0x5237 || des.idProduct == 0xFFCC)) ||
 		    (des.idVendor == 0x359F && des.idProduct == 0x3031) ||
-		    (des.idVendor == 0x16C0 && des.idProduct == 0x05DC)) {
+		    (des.idVendor == 0x16C0 && des.idProduct == 0x05DC) ||
+		    (des.idVendor == 0x1D50 &&
+		     (des.idProduct == 0x608C || des.idProduct == 0x608D))) {
 			if (wr >= size){
 				sr_err("ds_scan_all_device_list(), buffer length is too short.");
 				break;

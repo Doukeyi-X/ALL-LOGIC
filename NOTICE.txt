@@ -11,6 +11,8 @@ This software is NOT affiliated with, endorsed by, or an official product of:
   - Sipeed / SLogic
   - PXLogic / PXView
   - WCH / Nanjing Qinheng
+  - Alientek / ATK-Logic
+  - Muse Lab / nanoDLA
   - or any other hardware vendor whose devices may appear in the device list
 
 Device names such as "DSLogic" in the UI are the hardware product names
