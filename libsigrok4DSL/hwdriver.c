@@ -438,12 +438,14 @@ SR_PRIV int ds_scan_all_device_list(libusb_context *usb_ctx,struct libusb_device
             continue;
         }
 
-		/* DreamSourceLab + WCH CH32 + SLogic16U3 + PXLogic + ATK-Logic + nanoDLA */
+		/* DreamSourceLab + WCH CH32 + SLogic family + PXLogic + ATK-Logic + nanoDLA */
 		if (des.idVendor == DS_VENDOR_ID ||
 		    (des.idVendor == 0x1A86 &&
 		     (des.idProduct == 0x5537 || des.idProduct == 0x5538 ||
 		      des.idProduct == 0x5237 || des.idProduct == 0xFFCC)) ||
-		    (des.idVendor == 0x359F && des.idProduct == 0x3031) ||
+		    (des.idVendor == 0x359F &&
+		     (des.idProduct == 0x0300 || des.idProduct == 0x3031 ||
+		      des.idProduct == 0x3032)) ||
 		    (des.idVendor == 0x16C0 && des.idProduct == 0x05DC) ||
 		    (des.idVendor == 0x1D50 &&
 		     (des.idProduct == 0x608C || des.idProduct == 0x608D))) {

@@ -27,7 +27,7 @@ ALL LOGIC 是一款**非官方**的多厂商逻辑分析仪上位机。
 下列设备为二次开发中自行接入，**不是**各厂商官方上位机：
 
 1. **CH32H417 逻辑分析仪** — [立创开源硬件](https://oshwhub.com/q2h2/project_bszkxrnf) · [固件仓库](https://github.com/Doukeyi-X/OpenSourceLogic-CH32H417)
-2. **SLogic16U3（5 Gbps 版本）** — [Sipeed 介绍页](https://wiki.sipeed.com/hardware/zh/logic_analyzer/slogic16u3/Introduction.html)
+2. **Sipeed SLogic Combo 8、SLogic16U3、SLogic32U3** — [Sipeed 介绍页](https://wiki.sipeed.com/hardware/zh/logic_analyzer/slogic16u3/Introduction.html)
 3. **PXLogic32U3（5 Gbps 版本）** — [MarryChip](https://marrychip.com/)
 4. **ATK-Logic（正点原子 DL16 等）** — [官方上位机源码](https://github.com/alientek-openedv/atk-logic)
 5. **nanoDLA / Cypress FX2（fx2lafw）** — [wuxx/nanoDLA](https://github.com/wuxx/nanoDLA)
@@ -105,7 +105,7 @@ On top of the original DSView sources we mainly:
 These were added in this secondary development. They are **not** official vendor hosts:
 
 1. **CH32H417 logic analyzer** — [OSHWHUB project](https://oshwhub.com/q2h2/project_bszkxrnf) · [firmware](https://github.com/Doukeyi-X/OpenSourceLogic-CH32H417)
-2. **SLogic16U3 (5 Gbps)** — [Sipeed introduction](https://wiki.sipeed.com/hardware/zh/logic_analyzer/slogic16u3/Introduction.html)
+2. **Sipeed SLogic Combo 8, SLogic16U3, and SLogic32U3** — [Sipeed introduction](https://wiki.sipeed.com/hardware/zh/logic_analyzer/slogic16u3/Introduction.html)
 3. **PXLogic32U3 (5 Gbps)** — [MarryChip](https://marrychip.com/)
 4. **ATK-Logic (Alientek DL16 etc.)** — [official host source](https://github.com/alientek-openedv/atk-logic)
 5. **nanoDLA / Cypress FX2 (fx2lafw)** — [wuxx/nanoDLA](https://github.com/wuxx/nanoDLA)

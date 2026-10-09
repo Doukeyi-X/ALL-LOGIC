@@ -507,12 +507,25 @@ set(libsigrok4DSL_SOURCES
     libsigrok4DSL/hardware/DSL/dsl.c
     libsigrok4DSL/hardware/CH32/ch32_logic.c
     libsigrok4DSL/hardware/sipeed-slogic/slogic16u3.c
+    libsigrok4DSL/hardware/sipeed-slogic/slogic/slogic.c
+    libsigrok4DSL/hardware/sipeed-slogic/slogic/slogic8u2.c
+    libsigrok4DSL/hardware/sipeed-slogic/slogic/slogic16u3.c
+    libsigrok4DSL/hardware/sipeed-slogic/slogic/slogic32u3.c
     libsigrok4DSL/hardware/pxlogic/usb_ctrl.c
     libsigrok4DSL/hardware/pxlogic/pxlogic.c
     libsigrok4DSL/hardware/atk-logic/atk_logic.c
     libsigrok4DSL/hardware/fx2lafw/fx2lafw.c
     libsigrok4DSL/lib_main.c
 )
+
+# SLogic32U3 can deliver 800 MB/s. Its packet conversion is deliberately
+# optimized even in Debug builds so the USB producer cannot outrun the
+# session consumer while developers test the device.
+if (CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+    set_source_files_properties(
+        libsigrok4DSL/hardware/sipeed-slogic/slogic16u3.c
+        PROPERTIES COMPILE_OPTIONS "-O3")
+endif()
 
 set(libsigrok4DSL_HEADERS
     libsigrok4DSL/version.h
@@ -617,6 +630,7 @@ add_definitions(-Wall -Wextra -Wno-return-type -Wno-ignored-qualifiers)
 add_definitions(
 	-DHAVE_ATKLOGIC_DEVICE=1
 	-DHAVE_FX2LAFW_DEVICE=1
+	-DHAVE_SLOGIC_DEVICE=1
 )
 
 if(NOT DISABLE_WERROR)
@@ -730,18 +744,16 @@ install(FILES DSView/icons/logo.svg DESTINATION share/DSView RENAME logo.svg)
 install(FILES DSView/icons/logo.svg DESTINATION share/icons/hicolor/scalable/apps RENAME dsview.svg)
 install(FILES DSView/icons/logo.svg DESTINATION share/pixmaps RENAME dsview.svg)
 
-if(CMAKE_SYSTEM_NAME MATCHES "Linux")	
-	install(FILES DSView/DSView.desktop DESTINATION /usr/share/applications RENAME dsview.desktop)
-	
+if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+	# Keep every destination relative to CMAKE_INSTALL_PREFIX so that staged
+	# installs (cmake --install build.dir --prefix dist) work without root.
+	# Installing with -DCMAKE_INSTALL_PREFIX=/usr still lands in the usual
+	# system locations.
+	install(FILES DSView/DSView.desktop DESTINATION share/applications RENAME dsview.desktop)
+
 	add_compile_definitions(_DEFAULT_SOURCE)
 
-	if(IS_DIRECTORY /usr/lib/udev/rules.d)
-		install(FILES DSView/DreamSourceLab.rules DESTINATION /usr/lib/udev/rules.d RENAME 60-dreamsourcelab.rules)
-	elseif(IS_DIRECTORY /lib/udev/rules.d)
-		install(FILES DSView/DreamSourceLab.rules DESTINATION /lib/udev/rules.d RENAME 60-dreamsourcelab.rules)
-	elseif(IS_DIRECTORY /etc/udev/rules.d)
-		install(FILES DSView/DreamSourceLab.rules DESTINATION /etc/udev/rules.d RENAME 60-dreamsourcelab.rules)
-	endif()
+	install(FILES DSView/DreamSourceLab.rules DESTINATION lib/udev/rules.d RENAME 60-dreamsourcelab.rules)
 
 endif()
 
@@ -777,5 +789,3 @@ if(ENABLE_TESTS)
 	enable_testing()
 	add_test(test ${CMAKE_CURRENT_BINARY_DIR}/DSView/test/DSView-test)
 endif(ENABLE_TESTS)
-
-

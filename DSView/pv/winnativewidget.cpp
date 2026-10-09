@@ -23,7 +23,9 @@
 
 #include "winnativewidget.h"
 #include <QApplication>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QDesktopWidget>
+#endif
 #include <QScreen>
 #include <QGuiApplication>
 #include <QWindow>
@@ -258,13 +260,13 @@ LRESULT CALLBACK WinNativeWidget::WndProc(HWND hWnd, UINT message, WPARAM wParam
         case WM_KEYDOWN:
         { 
             //enable the hot key.
-            QKeyEvent keyEvent(QEvent::KeyPress, (int)wParam, 0);
+            QKeyEvent keyEvent(QEvent::KeyPress, (int)wParam, Qt::NoModifier);
             QApplication::sendEvent(self->_childWidget->GetBodyView(), &keyEvent);
             break;
         }
         case WM_KEYUP:
         {   
-            QKeyEvent keyEvent(QEvent::KeyRelease, (int)wParam, 0);
+            QKeyEvent keyEvent(QEvent::KeyRelease, (int)wParam, Qt::NoModifier);
             QApplication::sendEvent(self->_childWidget->GetBodyView(), &keyEvent);
             break;
         }

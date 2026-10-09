@@ -108,7 +108,11 @@ void WinShadow::hideShadow()
     QWidget::hide();
 }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+bool WinShadow::nativeEvent(const QByteArray &eventType, void *message, qintptr *result)
+#else
 bool WinShadow::nativeEvent(const QByteArray &eventType, void *message, long *result)
+#endif
 {  
     MSG *msg = static_cast<MSG*>(message);
 

@@ -84,6 +84,8 @@ void McpServer::stop()
 		_server = NULL;
 	}
 	_bufs.clear();
+	_busy.clear();
+	_dying.clear();
 }
 
 bool McpServer::is_running() const
@@ -124,7 +126,16 @@ void McpServer::on_disconnected()
 	if (!sock)
 		return;
 	_bufs.remove(sock);
-	sock->deleteLater();
+	/*
+	 * The tools that wait for a capture run a nested event loop, so the
+	 * socket may still be on the stack inside handle_http().  Deleting it
+	 * here would let handle_http()/send_http() write through a dangling
+	 * pointer afterwards.  Mark it for deletion after the handler returns.
+	 */
+	if (_busy.value(sock, 0) > 0)
+		_dying.insert(sock);
+	else
+		sock->deleteLater();
 }
 
 void McpServer::on_ready_read()
@@ -133,9 +144,11 @@ void McpServer::on_ready_read()
 	if (!sock)
 		return;
 	_bufs[sock] += sock->readAll();
-	QByteArray &buf = _bufs[sock];
 
 	for (;;) {
+		if (!_bufs.contains(sock))
+			return;
+		QByteArray &buf = _bufs[sock];
 		int hdr = buf.indexOf("\r\n\r\n");
 		if (hdr < 0)
 			return;
@@ -151,7 +164,24 @@ void McpServer::on_ready_read()
 			return;
 		QByteArray msg = buf.left(total);
 		buf.remove(0, total);
+		_busy[sock] = _busy.value(sock, 0) + 1;
 		handle_http(sock, msg);
+		int depth = _busy.value(sock, 0) - 1;
+		if (depth > 0)
+			_busy[sock] = depth;
+		else
+			_busy.remove(sock);
+		if (depth <= 0 && _dying.remove(sock)) {
+			sock->deleteLater();
+			return;
+		}
+		/*
+		 * send_http() closes the connection.  The resulting disconnected
+		 * signal may remove the socket's entry from _bufs before control
+		 * returns here, so do not touch the reference on another iteration.
+		 */
+		if (!_bufs.contains(sock))
+			return;
 	}
 }
 
@@ -367,6 +397,9 @@ QJsonObject McpServer::handle_tools_list()
 			{"description", "buffer or stream"}};
 		p["enabled_channels"] = QJsonObject{{"type", "array"},
 			{"items", QJsonObject{{"type", "integer"}}}};
+		p["pattern"] = QJsonObject{{"type", "string"},
+			{"description", "Device test pattern, e.g. Normal, "
+					 "USB connection test, Emulation"}};
 		tools.append(tool_schema("configure",
 			"Set sample rate, depth, threshold, channels.", p, QJsonArray()));
 	}
@@ -537,17 +570,23 @@ QJsonObject McpServer::tool_get_status()
 {
 	SigSession *ss = session();
 	DeviceAgent *dev = ss ? ss->get_device() : NULL;
+	const bool have_device = dev && dev->have_instance();
 	QJsonObject o;
 	o["mcp"] = url();
 	o["mcp_running"] = is_running();
-	o["have_device"] = dev && dev->have_instance();
-	o["device"] = dev ? dev->name() : "";
-	o["driver"] = dev ? dev->driver_name() : "";
+	o["have_device"] = have_device;
+	o["device"] = have_device ? dev->name() : "";
+	o["driver"] = have_device ? dev->driver_name() : "";
 	o["capturing"] = ss && ss->is_working();
-	o["samplerate_hz"] = (qint64)(dev ? dev->get_sample_rate() : 0);
-	o["sample_count"] = (qint64)(dev ? dev->get_sample_limit() : 0);
-	o["work_mode"] = dev ? dev->get_work_mode() : -1;
-	o["stream"] = dev && dev->is_stream_mode();
+	o["samplerate_hz"] = (qint64)(have_device ? dev->get_sample_rate() : 0);
+	o["sample_count"] = (qint64)(have_device ? dev->get_sample_limit() : 0);
+	o["work_mode"] = have_device ? dev->get_work_mode() : -1;
+	o["stream"] = have_device && dev->is_stream_mode();
+	if (have_device) {
+		QString pattern;
+		if (dev->get_config_string(SR_CONF_PATTERN_MODE, pattern))
+			o["pattern"] = pattern;
+	}
 	if (ss) {
 		data::Snapshot *snap = ss->get_snapshot(SR_CHANNEL_LOGIC);
 		o["captured_samples"] = snap ? (qint64)snap->get_sample_count() : 0;
@@ -609,6 +648,13 @@ QJsonObject McpServer::tool_configure(const QJsonObject &args)
 	if (args.contains("vth")) {
 		dev->set_config_double(SR_CONF_VTH, args.value("vth").toDouble());
 		done << "vth";
+	}
+	if (args.contains("pattern")) {
+		QString pattern = args.value("pattern").toString();
+		if (!dev->set_config_string(SR_CONF_PATTERN_MODE,
+					    pattern.toUtf8().constData()))
+			return tool_text("failed to set pattern: " + pattern, true);
+		done << "pattern";
 	}
 	if (args.contains("enabled_channels") && args.value("enabled_channels").isArray()) {
 		QJsonArray want = args.value("enabled_channels").toArray();

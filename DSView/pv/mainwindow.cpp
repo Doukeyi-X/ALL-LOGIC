@@ -516,7 +516,8 @@ namespace pv
 
 #ifdef _WIN32 
     #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-        QPixmap pixmap = QGuiApplication::primaryScreen()->grabWindow(QApplication::desktop->winId(), x, y, w, h);
+        // Qt6 removed QApplication::desktop(); id 0 grabs the whole screen.
+        QPixmap pixmap = QGuiApplication::primaryScreen()->grabWindow(0, x, y, w, h);
     #else
         QPixmap pixmap = QPixmap::grabWidget(parentWidget());
     #endif

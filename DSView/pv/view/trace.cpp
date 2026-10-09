@@ -37,15 +37,18 @@
 namespace pv {
 namespace view {
 
+// SLogic digital channel palette: 8 colours per group, repeating every 8
+// channels (D8k+0..D8k+7). Order: red, orange, yellow, green, brown, blue,
+// white, grey. Shared across PulseView / SLogicView / ALL-Logic / ngscopeclient.
 const QColor Trace::PROBE_COLORS[8] = {
-    QColor(0x50, 0x50, 0x50),	// Black
-    QColor(0x8F, 0x52, 0x02),	// Brown
-    QColor(0xCC, 0x00, 0x00),	// Red
-    QColor(0xF5, 0x79, 0x00),	// Orange
-    QColor(0xED, 0xD4, 0x00),	// Yellow
-    QColor(0x73, 0xD2, 0x16),	// Green
-    QColor(0x34, 0x65, 0xA4),	// Blue
-    QColor(0x75, 0x50, 0x7B),	// Violet
+    QColor(0xFF, 0x00, 0x00),	// Red
+    QColor(0xFF, 0x80, 0x00),	// Orange
+    QColor(0xFF, 0xE0, 0x00),	// Yellow
+    QColor(0x00, 0xC0, 0x00),	// Green
+    QColor(0xA0, 0x52, 0x2D),	// Brown
+    QColor(0x20, 0x80, 0xFF),	// Blue
+    QColor(0xFF, 0xFF, 0xFF),	// White
+    QColor(0xA0, 0xA0, 0xA0),	// Grey
 };
 const int Trace::LabelHitPadding = 2;
 

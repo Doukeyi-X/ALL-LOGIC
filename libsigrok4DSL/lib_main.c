@@ -1332,8 +1332,9 @@ static int update_device_handle(struct libusb_device *old_dev, struct libusb_dev
 #endif
 #ifdef HAVE_SLOGIC_DEVICE
 		if (slogic_count == 1 && slogic_fallback != NULL &&
-		    nvid == 0x359F && npid == 0x3031) {
-			sr_info("SLogic reconnect: fall back to sole slogic-16u3 instance.");
+		    nvid == 0x359F &&
+		    (npid == 0x0300 || npid == 0x3031 || npid == 0x3032)) {
+			sr_info("SLogic reconnect: fall back to sole SLogic instance.");
 			fallback = slogic_fallback;
 			bFind = 1;
 		} else

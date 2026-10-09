@@ -21,7 +21,9 @@
 
 #include "path.h"
 #ifdef _WIN32
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QTextCodec>
+#endif
 #include "../log.h"
 #include <string.h>
 #endif
@@ -48,7 +50,7 @@ namespace path{
     {
         std::string str;
          
-#ifdef _WIN32
+#if defined(_WIN32) && QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         QTextCodec *codec = QTextCodec::codecForName("System");
         if (codec != NULL){
             QByteArray str_tmp = codec->fromUnicode(path);
@@ -58,6 +60,9 @@ namespace path{
             dsv_err("Error: can't get \"System\" page code");
             str = path.toUtf8().data();
         }       
+#elif defined(_WIN32)
+        // Qt6 removed QTextCodec; toLocal8Bit converts with the ANSI code page.
+        str = path.toLocal8Bit().data();
 #else
         str = path.toUtf8().data();        
 #endif

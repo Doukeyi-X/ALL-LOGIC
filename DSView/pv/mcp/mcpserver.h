@@ -80,6 +80,11 @@ private:
 
 	QTcpServer *_server;
 	QHash<QTcpSocket *, QByteArray> _bufs;
+	/* Nesting depth of handle_http() per socket.  Some tools run a nested
+	 * event loop, so a disconnect must not free the socket until the
+	 * outermost handler has returned. */
+	QHash<QTcpSocket *, int> _busy;
+	QSet<QTcpSocket *> _dying;
 	int _port;
 	bool _running;
 };

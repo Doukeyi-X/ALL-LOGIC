@@ -156,15 +156,19 @@ static int sr_session_iteration(gboolean block)
 	for (i = 0; i < session->num_sources; i++) {
 		if (session->pollfds[i].revents > 0 || (ret == 0
 			&& session->source_timeout == session->sources[i].timeout)) {
+			gintptr poll_object = session->sources[i].poll_object;
+			sr_receive_data_callback_t cb = session->sources[i].cb;
+			const struct sr_dev_inst *cb_data =
+				session->sources[i].cb_data;
 			/*
 			 * Invoke the source's callback on an event,
 			 * or if the poll timed out and this source
 			 * asked for that timeout.
 			 */
-			if (!session->sources[i].cb(session->pollfds[i].fd,
+			if (!cb(session->pollfds[i].fd,
 					session->pollfds[i].revents,
-					session->sources[i].cb_data))
-				sr_session_source_remove(session->sources[i].poll_object);
+					cb_data))
+				sr_session_source_remove((int)poll_object);
 		}
 		/*
 		 * We want to take as little time as possible to stop
@@ -217,6 +221,24 @@ SR_PRIV int sr_session_run(void)
 		gboolean stop_sent = FALSE;
 		guint64 abort_start = 0;
 		while (session->num_sources) {
+			/*
+			 * Nothing pollable here: hardware drivers that own a
+			 * libusb event thread (SLogic32U3, ...) only need this
+			 * callback to drain a queue, and they ask for a 1 ms
+			 * tick. Free-wheeling instead would burn a whole core
+			 * for the entire capture and starve the UI thread, so
+			 * pace the loop with the requested interval. Drivers
+			 * that ask for immediate service (timeout == 0, e.g.
+			 * the virtual/session device) keep the old behaviour.
+			 */
+			int pace_us = 0;
+
+			if (session->sources[0].timeout > 0) {
+				pace_us = session->sources[0].timeout * 1000;
+				if (pace_us > 2000)
+					pace_us = 2000;
+			}
+
 			g_mutex_lock(&session->stop_mutex);
 			if (session->abort_session) {
 				if (!stop_sent) {
@@ -229,7 +251,28 @@ SR_PRIV int sr_session_run(void)
 			}
 			g_mutex_unlock(&session->stop_mutex);
 
-			session->sources[0].cb(-1, 0, session->sources[0].cb_data);
+			sr_receive_data_callback_t cb = session->sources[0].cb;
+			const struct sr_dev_inst *cb_data =
+				session->sources[0].cb_data;
+			gintptr poll_object = session->sources[0].poll_object;
+			gint64 cb_start = g_get_monotonic_time();
+
+			if (!cb(-1, 0, cb_data))
+				sr_session_source_remove((int)poll_object);
+
+			/*
+			 * Only pad the idle time: as long as the callback itself
+			 * keeps the thread busy (it converts the incoming USB
+			 * blocks), the loop runs unthrottled, so a full-speed
+			 * capture is not slowed down by the pacing above.
+			 */
+			if (pace_us > 0 && session->num_sources) {
+				gint64 cb_us =
+					g_get_monotonic_time() - cb_start;
+
+				if (cb_us < pace_us)
+					g_usleep((gulong)(pace_us - cb_us));
+			}
 
 			/* Safety: if hardware never drains after stop, force exit (~2s). */
 			if (stop_sent && (g_get_monotonic_time() - abort_start) > 2000000) {
@@ -493,8 +536,9 @@ static int _sr_session_source_remove(gintptr poll_object)
 	}
 
 	if (!session->sources || !session->num_sources) {
-		sr_err("%s: sources was NULL", __func__);
-		return SR_ERR_BUG;
+		/* A callback may remove its own source. Treat a second removal as a
+		 * harmless no-op so the caller can safely return FALSE. */
+		return SR_OK;
 	}
 
 	for (old = 0; old < session->num_sources; old++) {

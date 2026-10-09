@@ -1,5 +1,6 @@
 /*
- * Sipeed SLogic16U3 driver for DSView / libsigrok4DSL
+ * Sipeed SLogic family driver (Combo 8, 16U3 and 32U3) for
+ * DSView / libsigrok4DSL
  */
 #ifndef LIBSIGROK_HARDWARE_SLOGIC16U3_H
 #define LIBSIGROK_HARDWARE_SLOGIC16U3_H

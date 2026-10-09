@@ -30,7 +30,7 @@
 #include <QTimer>
 #include <QRect>
 
-#ifdef _WIN32
+#if defined(_WIN32) && QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QWinTaskbarButton>
 #include <QWinTaskbarProgress>
 #endif
@@ -117,7 +117,9 @@ protected:
     bool eventFilter(QObject *object, QEvent *event) override;
 
 #ifdef _WIN32
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     void showEvent(QShowEvent *event);
+#endif
     bool nativeEvent(const QByteArray &eventType, void *message, MESSAGE_RESULT_PTR result) override;
 #endif
 
@@ -173,7 +175,7 @@ private:
     QTimer  _timer;
     bool    _freezing; 
     // Taskbar Progress Effert for Win7 and Above
-#ifdef _WIN32
+#if defined(_WIN32) && QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QWinTaskbarButton *_taskBtn;
     QWinTaskbarProgress *_taskPrg;
 #endif
